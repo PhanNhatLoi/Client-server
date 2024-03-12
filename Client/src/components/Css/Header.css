@@ -1,0 +1,58 @@
+/* Header */
+
+.header {
+    position: fixed;
+    top:0;
+    background: white;
+    width: 100vmax;
+    padding-right: 10px;
+    
+}
+.header a{
+    color: black;
+}
+
+.header a:hover{
+    color: brown;
+}
+
+.header label{
+    text-transform: uppercase;
+    font-size: 19px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+
+.header .search{
+    right: 10px;
+    left: 10px;
+}
+
+.header img{
+    width: 40px;
+    border-radius: 50%;
+    width: 50px;
+    transform: translateY(-3px);
+    cursor: pointer;
+}
+
+.header .user {
+    text-transform: uppercase;
+}
+
+.header .user:hover {
+    color: red;
+}
+
+/* left menu */
+.left-menu {
+    position:absolute;
+}
+
+.backtop{
+    height: 50px;
+    width: 50px;
+    line-height: '40px';
+    border-radius : 50%;
+    background:gray;
+}
