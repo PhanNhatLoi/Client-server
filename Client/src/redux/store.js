@@ -1,16 +1,16 @@
-import React from 'react'
-import {createStore} from 'redux'
-import rootReducer from './reducers/'
-import {Provider} from 'react-redux'
+import React from "react";
+import { Provider } from "react-redux";
+import { persistor, store } from "./reducers";
+import { PersistGate } from "redux-persist/lib/integration/react";
 
-const store = createStore(rootReducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-
-function DataProvider({children}) {
-    return (
-        <Provider store = {store}>
-            {children}
-        </Provider>
-    )
+function DataProvider({ children }) {
+  return (
+    <Provider store={store}>
+      <PersistGate loading={<div>loading</div>} persistor={persistor}>
+        {children}
+      </PersistGate>
+    </Provider>
+  );
 }
 
-export default DataProvider
+export default DataProvider;

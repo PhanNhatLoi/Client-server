@@ -6,7 +6,6 @@ const sendEmail = require("./sendMail");
 const { google } = require("googleapis");
 const { OAuth2 } = google.auth;
 const client = new OAuth2(process.env.MAILING_SERVICE_CLIENT_ID);
-const fetch = require("node-fetch");
 
 const CLIENT_URL = process.env.CLIENT_URL;
 const saltOrRounds = 10;
@@ -226,12 +225,9 @@ const userCtrl = {
         if (user) {
           const isMatch = await bcrypt.compare(password, user.password);
           if (!isMatch)
-            return res
-              .status(400)
-              .json({
-                msg:
-                  "The account has been registered with a different password.",
-              });
+            return res.status(400).json({
+              msg: "The account has been registered with a different password.",
+            });
 
           const refresh_token = createRefreshToken({ id: user._id });
           res.cookie("refreshtoken", refresh_token, {

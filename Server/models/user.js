@@ -1,34 +1,44 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
-const user = new mongoose.Schema({
-    name:{
-        type:String,
-        required:[true,'please enter your name'],
-        trim:true
+const user = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: [true, "please enter your name"],
+      trim: true,
     },
-    email:{
-        type:String,
-        required:[true,'please enter your email'],
-        trim:true,
-        unique:true
+    email: {
+      type: String,
+      required: [true, "please enter your email"],
+      trim: true,
+      unique: true,
     },
-    password:{
-        type:String,
-        required:[true,'please enter your password'],
+    password: {
+      type: String,
+      required: [true, "please enter your password"],
     },
-    role:{
-        type:Number,
-        default: 0
+    role: {
+      type: Number,
+      default: 0,
     },
-    avatar  :{
-        type:String,
-        default: 'https://res.cloudinary.com/nhatloi/image/upload/v1608601448/avatar/78-785904_block-chamber-of-commerce-avatar-white-avatar-icon_b9lssx.jpg'
+    state: {
+      type: String,
+      enum: ["Online", "Offline"],
+      default: "Offline",
     },
-
-},
-    {
-        timestamps:true
-    }
+    socketId: {
+      type: String,
+      default: "",
+    },
+    avatar: {
+      type: String,
+      default:
+        "https://res.cloudinary.com/nhatloi/image/upload/v1608601448/avatar/78-785904_block-chamber-of-commerce-avatar-white-avatar-icon_b9lssx.jpg",
+    },
+  },
+  {
+    timestamps: true,
+  }
 );
 
-module.exports = mongoose.model('User',user)
+module.exports = mongoose.model("User", user);
